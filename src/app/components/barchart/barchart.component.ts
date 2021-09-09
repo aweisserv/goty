@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { results } from './data';
 
 @Component({
   selector: 'app-barchart',
@@ -7,24 +8,7 @@ import { Component } from '@angular/core';
 })
 export class BarchartComponent {
 
-  results: any[] = [
-    {
-      "name": "Juego 1",
-      "value": 20
-    },
-    {
-      "name": "Juego 2",
-      "value": 25
-    },
-    {
-      "name": "Juego 3",
-      "value": 15
-    },
-    {
-      "name": "Juego 4",
-      "value": 10
-    }
-  ];
+  results!: any[];
 
   // options
   showXAxis   = true;
@@ -35,10 +19,12 @@ export class BarchartComponent {
   xAxisLabel = 'Juegos';
   showYAxisLabel = true;
   yAxisLabel = 'Votos';
+  animations = true;
+  activeEntries = [];
 
-  colorScheme = 'nightLights'
+  colorScheme = 'cool'
 
-  constructor() { }
+  constructor() { Object.assign(this, { results }) }
 
   onSelect(event: any) {
     console.log(event);
