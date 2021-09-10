@@ -1,9 +1,9 @@
-<div class="chart-container ">
+<div class="chart-container" >
 
     <ngx-charts-bar-horizontal 
+        [customColors]="colors"
         [activeEntries]="activeEntries"
         [animations]="animations"
-        [scheme]="colorScheme"
         [results]="results"
         [gradient]="gradient"
         [xAxis]="showXAxis"
@@ -13,7 +13,10 @@
         [showYAxisLabel]="showYAxisLabel"
         [xAxisLabel]="xAxisLabel"
         [yAxisLabel]="yAxisLabel"
-        (select)="onSelect($event)">
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)">
     </ngx-charts-bar-horizontal>
 
 </div>
+

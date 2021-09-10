@@ -1,0 +1,7 @@
+.chart-container {
+    display: grid;
+    height: 300px;
+}
+
+
+::ng-deep .ngx-charts { text { fill: #fff !important; } }
