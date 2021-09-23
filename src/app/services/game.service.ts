@@ -35,5 +35,11 @@ export class GameService {
  
   }
 
+  voteGame( id: string ){
+
+    return this.http.post(`${ environment.url }/api/goty/${ id }`, {});
+
+  }
+
 
 }

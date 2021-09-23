@@ -9,12 +9,13 @@
             <div *ngFor="let game of games" class="card">
                 
               <img [src]="game.url" class="card-img-top" [alt]="game.name">
-              <div class="card-body text-dark">
+              <div class="card-body text-white bg-dark">
                 <h5 class="card-title">{{ game.name }}</h5>
-                <button class="btn btn-outline-dark">Vota aquí</button>
+                
               </div>
-              <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+              <div class="card-footer d-flex justify-content-evenly">
+                <button class="btn btn-outline-dark text-center"
+                    (click)="voteGame( game )">Vota aquí</button>
               </div>
             </div>
         </div>

@@ -21,4 +21,13 @@ export class GotyComponent implements OnInit {
       });
     }
 
+  voteGame( game: Game ){
+
+    this.gameService.voteGame(game.id)
+      .subscribe( resp=> {
+        console.log(resp);
+      } )
+
+  }
+
 }
