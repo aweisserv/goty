@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Game } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-inicio',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  private itemsCollection: AngularFirestoreCollection<Game>;
+
+  constructor( private afs: AngularFirestore ) {
+    
+    this.itemsCollection = afs.collection<Game>('goty');
+    this.itemsCollection.valueChanges().subscribe( (resp)=> {
+      console.log(resp);
+    });
+
+   }
 
   ngOnInit(): void {
+
   }
 
 }

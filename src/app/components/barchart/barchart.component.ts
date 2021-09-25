@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ColorHelper, ScaleType } from '@swimlane/ngx-charts';
 import { results } from './data';
 
 @Component({
@@ -28,22 +27,22 @@ export class BarchartComponent implements OnDestroy {
   activeEntries = [];
   colorScheme = 'nightLights';
 
-  intervalo;
+  // intervalo;
 
   constructor() { 
     
     Object.assign(this, { results })
   
-    this.intervalo = setInterval( ()=> {
-      console.log('tick');
-      const newResults = [...this.results]
-
-      for( let i in newResults ){
-        newResults[i].value = Math.round( Math.random() * 500 )
-      }
-
-      this.results = [...newResults];
-    }, 1500 );
+  //  this.intervalo = setInterval( ()=> {
+  //    console.log('tick');
+  //    const newResults = [...this.results]
+//
+  //    for( let i in newResults ){
+  //      newResults[i].value = Math.round( Math.random() * 500 )
+  //    }
+//
+  //    this.results = [...newResults];
+  //  }, 1500 );
   
   }
 
@@ -62,7 +61,7 @@ export class BarchartComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    clearInterval( this.intervalo );
+  //  clearInterval( this.intervalo );
   }
 
 }
