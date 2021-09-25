@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Game } from '../interfaces/interfaces';
 
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -37,7 +37,13 @@ export class GameService {
 
   voteGame( id: string ){
 
-    return this.http.post(`${ environment.url }/api/goty/${ id }`, {});
+    return this.http.post(`${ environment.url }/api/goty/${ id }`, {})
+      .pipe(
+        catchError( err => {
+          console.log("Error en la petición");
+          return of( err.error );
+        })
+      )
 
   }
 

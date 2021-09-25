@@ -34,6 +34,13 @@ export class GotyComponent implements OnInit {
             icon: 'success',
             confirmButtonText: 'Aceptar'
           })
+        } else {
+          Swal.fire({
+            title: 'Error',
+            text: resp.mensaje,
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          })
         }
       } );
 
