@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs/operators';
 import { Game } from 'src/app/interfaces/interfaces';
 
 @Component({
@@ -14,9 +15,15 @@ export class InicioComponent implements OnInit {
   constructor( private afs: AngularFirestore ) {
     
     this.itemsCollection = afs.collection<Game>('goty');
-    this.itemsCollection.valueChanges().subscribe( (resp)=> {
-      console.log(resp);
-    });
+    this.itemsCollection.valueChanges()
+      .pipe(
+        map( (resp: Game[]) => {
+          return resp.map( ({ name, votes }) => ( { name, value: votes } ))
+        })
+      )
+      .subscribe( (resp)=> {
+        console.log(resp);
+      });
 
    }
 
