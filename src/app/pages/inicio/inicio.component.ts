@@ -10,6 +10,8 @@ import { Game } from 'src/app/interfaces/interfaces';
 })
 export class InicioComponent implements OnInit {
 
+  games: any[] = [];
+
   private itemsCollection: AngularFirestoreCollection<Game>;
 
   constructor( private afs: AngularFirestore ) {
@@ -22,7 +24,7 @@ export class InicioComponent implements OnInit {
         })
       )
       .subscribe( (resp)=> {
-        console.log(resp);
+        this.games = resp;
       });
 
    }

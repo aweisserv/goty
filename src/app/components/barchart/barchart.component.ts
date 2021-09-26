@@ -1,5 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
-import { results } from './data';
+import { Component, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-barchart',
@@ -8,12 +7,13 @@ import { results } from './data';
 })
 export class BarchartComponent implements OnDestroy {
 
+  @Input() results: any[] = [];
+
   colors = {
     domain: ['#ffffff"', '#ffffff"', '#ffffff"', '#ffffff"']
   };
   active = true;
-  results!: any[];
-
+  
   // options
   showXAxis   = true;
   showYAxis  = true;
@@ -31,7 +31,7 @@ export class BarchartComponent implements OnDestroy {
 
   constructor() { 
     
-    Object.assign(this, { results })
+  //  Object.assign(this, { results })
   
   //  this.intervalo = setInterval( ()=> {
   //    console.log('tick');
